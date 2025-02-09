@@ -7,6 +7,8 @@ export default function NewPosts() {
 
   const handleCreatePost = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    /// In summary, this type definition helps TypeScript understand that the handleCreatePost function is 
+    // dealing with an event from a form element, allowing for proper type-checking and autocompletion.
     try {
       const response = await axiosPost.post("/posts", {
         title,
@@ -25,6 +27,10 @@ export default function NewPosts() {
   const handleContentChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setContent(e.target.value);
   }
+
+  /*Difference between React.ChangeEvent<HTMLInputElement> and React.ChangeEvent<HTMLTextAreaElement>:
+<input> elements (used for single-line text fields) use React.ChangeEvent<HTMLInputElement>, which is optimized for managing form inputs that accept a single line of text.
+<textarea> elements (used for multi-line text fields) use React.ChangeEvent<HTMLTextAreaElement>, which handles multi-line input.*/
 
   return (
     <div>
